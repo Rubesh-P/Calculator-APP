@@ -24,15 +24,6 @@ const fadeIn = keyframes`
   }
 `;
 
-const blink = keyframes`
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
-`;
-
 const pulse = keyframes`
   0% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
@@ -42,6 +33,46 @@ const pulse = keyframes`
   }
   100% {
     box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+`;
+
+const colorChange = keyframes`
+  0% {
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  25% {
+    color: #f59e0b;
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+    opacity: 1;
+  }
+  45% {
+    opacity: 0.7;
+  }
+  50% {
+    color: #8b5cf6;
+    text-shadow: 0 0 20px rgba(139, 92, 246, 0.8);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  75% {
+    color: #ef4444;
+    text-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.7;
+  }
+  100% {
+    color: #00d4ff;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    opacity: 1;
   }
 `;
 
@@ -120,12 +151,7 @@ const DisplayText = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const Cursor = styled('span')({
-  color: '#00d4ff',
-  animation: `${blink} 1s infinite`,
-  fontSize: 'inherit',
-  fontWeight: 'inherit',
-});
+
 
 const ButtonGrid = styled(Box)(({ theme }) => ({
   display: 'grid',
@@ -227,43 +253,31 @@ const ZeroButton = styled(NumberButton)({
   gridColumn: 'span 2',
 });
 
-// Typewriter Display Component
-const TypewriterDisplay = ({ text, isOn }: { text: string; isOn: boolean }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
+const AnimatedTitle = styled(Typography)(({ theme }) => ({
+  fontFamily: '"JetBrains Mono", "Fira Code", monospace',
+  fontSize: '1.8rem',
+  fontWeight: '700',
+  textAlign: 'center',
+  marginBottom: theme.spacing(3),
+  animation: `${colorChange} 4s infinite ease-in-out`,
+  letterSpacing: '2px',
+  textTransform: 'uppercase',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.4rem',
+    letterSpacing: '1px',
+  },
+  '@media (max-width: 382px)': {
+    fontSize: '1.1rem',
+    letterSpacing: '0.5px',
+    marginBottom: theme.spacing(2),
+  },
+}));
 
-  useEffect(() => {
-    if (!isOn) {
-      setDisplayedText('');
-      setCurrentIndex(0);
-      return;
-    }
-
-    if (text === 'Error') {
-      setDisplayedText(text);
-      setCurrentIndex(text.length);
-      return;
-    }
-
-    if (text.length < displayedText.length || !text.startsWith(displayedText.slice(0, currentIndex))) {
-      setDisplayedText('');
-      setCurrentIndex(0);
-    }
-
-    const timer = setTimeout(() => {
-      if (currentIndex < text.length) {
-        setDisplayedText(text.slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, [text, currentIndex, isOn, displayedText]);
-
+// Normal Display Component
+const NormalDisplay = ({ text, isOn }: { text: string; isOn: boolean }) => {
   return (
     <DisplayText variant="h4">
-      {displayedText}
-      {isOn && currentIndex < text.length && <Cursor>|</Cursor>}
+      {isOn ? text : ''}
     </DisplayText>
   );
 };
@@ -394,7 +408,7 @@ export default function Calculator() {
 
         {/* Display */}
         <Display>
-          <TypewriterDisplay text={expression} isOn={isOn} />
+          <NormalDisplay text={expression} isOn={isOn} />
         </Display>
 
         {/* Button Grid */}

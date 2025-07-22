@@ -38,7 +38,7 @@ export default function Home() {
         sx={{ 
           color: 'white',
           fontWeight: '800',
-          mb: 4,
+          mb: 2,
           textAlign: 'center',
           textShadow: '0 4px 20px rgba(0,0,0,0.3)',
           background: 'linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%)',
@@ -55,7 +55,7 @@ export default function Home() {
           },
         }}
       >
-        Calculator Pro
+        Rubesh's Calculator
       </Typography>
       <Box sx={{ 
         position: 'relative', 
