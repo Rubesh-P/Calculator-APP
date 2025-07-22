@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Calculator App
+
+A modern, responsive calculator built with Next.js 15 and Material UI.
+
+## Features
+
+- **Basic Operations**: Addition, subtraction, multiplication, and division
+- **ON/OFF Toggle**: Power button to turn the calculator on and off
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Modern UI**: Built with Material UI components and custom styling
+- **Smooth Animations**: CSS animations for button interactions
+- **Clean Architecture**: Uses Next.js App Router with TypeScript
+
+## Tech Stack
+
+- **Next.js 15**: Latest version with App Router
+- **React 19**: Latest React with modern hooks
+- **Material UI**: For components and theming
+- **TypeScript**: For type safety
+- **Emotion**: For styled components (comes with Material UI)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. Clone the repository or download the files
+2. Navigate to the project directory:
+   ```bash
+   cd calculator-app
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Usage
+
+1. **Power On/Off**: Use the toggle switch at the top to turn the calculator on or off
+2. **Number Input**: Click number buttons to enter values
+3. **Operations**: Click operator buttons (+, -, ×, ÷) to perform calculations
+4. **Equals**: Click the equals button (=) to get the result
+5. **Clear**: Click the Clear button to reset the calculator
+6. **Decimal**: Click the decimal point (.) to add decimal numbers
+
+## Project Structure
+
+```
+calculator-app/
+├── app/
+│   ├── components/
+│   │   └── Calculator.tsx    # Main calculator component
+│   ├── globals.css          # Global styles
+│   ├── layout.tsx           # Root layout with Material UI setup
+│   ├── page.tsx             # Home page
+│   └── theme.ts             # Material UI theme configuration
+├── public/                  # Static files
+├── package.json             # Dependencies and scripts
+└── README.md               # This file
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features in Detail
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Responsive Design
+- Adapts to different screen sizes
+- Optimized touch targets for mobile devices
+- Proper spacing and sizing across devices
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Material UI Integration
+- Custom theme with color palette
+- Styled components with hover and active states
+- Consistent design language
 
-## Learn More
+### Calculator Logic
+- Handles chaining operations
+- Prevents division by zero
+- Proper decimal handling
+- State management with React hooks
 
-To learn more about Next.js, take a look at the following resources:
+## Available Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Browser Support
 
-## Deploy on Vercel
+This app works on all modern browsers including:
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is open source and available under the MIT License.
